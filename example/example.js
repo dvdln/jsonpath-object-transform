@@ -1,7 +1,7 @@
 /*jshint laxbreak:true*/
 /*global window, require, console*/
 
-var tranform = (typeof exports === 'object')
+var transform = (typeof exports === 'object')
     ? require('../lib/jsonpath-object-transform')
     : window.jsonpathObjectTransform;
 
@@ -24,6 +24,6 @@ var data = {
   }
 };
 
-var result = tranform(data, path);
+var result = transform(data, path);
 
 console.log(JSON.stringify(result, null, 2));
