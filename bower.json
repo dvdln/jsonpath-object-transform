@@ -1,7 +1,7 @@
 {
   "name": "jsonpath-object-transform",
   "main": "lib/jsonpath-object-transform.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/dvdln/jsonpath-object-transform",
   "authors": [
     "David Lane <me@dvdln.com>"
