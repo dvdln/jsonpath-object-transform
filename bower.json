@@ -23,5 +23,8 @@
     "remap",
     "map"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jsonpath": "*"
+  }
 }

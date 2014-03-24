@@ -1,6 +1,9 @@
-/*jshint node:true*/
+/*jshint laxbreak:true*/
+/*global window, require, console*/
 
-var translate = require('../lib/jsonpath-object-transform');
+var tranform = (typeof exports === 'object')
+    ? require('../lib/jsonpath-object-transform')
+    : window.jsonpathObjectTransform;
 
 var path = {
   foo: ['$.some.crazy', {
@@ -21,6 +24,6 @@ var data = {
   }
 };
 
-var result = translate(data, path);
+var result = tranform(data, path);
 
 console.log(JSON.stringify(result, null, 2));
