@@ -1,0 +1,32 @@
+{
+  "name": "jsonpath-object-transform",
+  "version": "0.2.7",
+  "description": "Transform an object literal using JSONPath.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dvdln/jsonpath-object-transform.git"
+  },
+  "keywords": [
+    "jsonpath",
+    "json",
+    "path",
+    "object",
+    "translate",
+    "format",
+    "transform",
+    "remap",
+    "map"
+  ],
+  "author": "David Lane <me@dvdln.com>",
+  "license": "MIT",
+  "dependencies": {
+    "JSONPath": "^0.10.0"
+  },
+  "devDependencies": {
+    "bower": "^1.3.1"
+  }
+}

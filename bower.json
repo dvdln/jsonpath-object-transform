@@ -1,0 +1,27 @@
+{
+  "name": "jsonpath-object-transform",
+  "main": "lib/jsonpath-object-transform.js",
+  "version": "0.2.7",
+  "homepage": "https://github.com/dvdln/jsonpath-object-transform",
+  "authors": [
+    "David Lane <me@dvdln.com>"
+  ],
+  "description": "Transform an object literal using JSONPath.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "jsonpath",
+    "json",
+    "path",
+    "object",
+    "translate",
+    "format",
+    "transform",
+    "remap",
+    "map"
+  ],
+  "license": "MIT"
+}
