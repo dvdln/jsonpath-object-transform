@@ -1,6 +1,6 @@
 {
   "name": "jsonpath-object-transform",
-  "version": "0.2.7",
+  "version": "1.0.0",
   "description": "Transform an object literal using JSONPath.",
   "main": "index.js",
   "scripts": {
