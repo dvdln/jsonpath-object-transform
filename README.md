@@ -86,7 +86,7 @@ Use an `Array` containing a single `String` to assign all results returned from 
 
 #### Example
 ```js
-var tempalte = {
+var template = {
   foo: ['$..example']
 };
 
