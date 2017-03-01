@@ -115,7 +115,7 @@ Use an `Array` with a `String` and an `Object` to assign all results returned fr
 #### Example
 ```js
 var template = {
-  foo: [$..example, {
+  foo: ['$..example', {
     bar: '$.demo'
   }]
 };
