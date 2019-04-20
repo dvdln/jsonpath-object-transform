@@ -3,7 +3,7 @@
 
 [![npm](https://badge.fury.io/js/jsonpath-object-transform.png)](http://badge.fury.io/js/jsonpath-object-transform)
 
-Pulls data from an object literal using JSONPath and generate a new objects based on a template. Each of the template's properties can pull a single property from the source data or an array of all results found by its JSONPath. When pulling an array of data you can also supply a subtemplate to transform each item in the array.
+Pulls data from an object literal using JSONPath and generate a new object based on a template. Each of the template's properties can pull a single property from the source data or an array of all results found by its JSONPath. When pulling an array of data you can also supply a subtemplate to transform each item in the array. Both keys and values will be interpolated.
 
 JSONPath is like XPath for JavaScript objects. To learn the syntax, read the documentation for the [JSONPath](https://www.npmjs.org/package/JSONPath) package on npm and the [original article](http://goessner.net/articles/JsonPath/) by Stefan Goessner.
 
@@ -115,7 +115,7 @@ Use an `Array` with a `String` and an `Object` to assign all results returned fr
 #### Example
 ```js
 var template = {
-  foo: [$..example, {
+  foo: ['$..example', {
     bar: '$.demo'
   }]
 };
@@ -140,5 +140,100 @@ Result:
     { bar: 'baz' },
     { bar: 'qux' }
   ]
+}
+```
+
+### Merge Items Returned in Array into a single object
+```js
+{ destination: ['$.path.to.sources', { '$.item.key': '$.item.path' }, {merge: true}] }
+```
+Use an `Array` with a `String` and an `Object` to assign all results returned from your JSONPath and transform each of the objects with a subtemplate. The "merge: true" option will merge the results into one object. e.g.
+```js
+[{a:'b'},{c:'d'},{e:'f'}]
+```
+->
+```js
+{a:'b',c:'d',e:'f'}
+```
+
+#### Example
+```js
+var template = {
+  foo: ['$..example', {
+    '$.key': '$.demo'
+  }, {merge: true}]
+};
+
+var data = {
+  a: {
+    example: {
+      key: 'a',
+      demo: 'baz'
+    }
+  },
+  b: {
+    // NOTE: you can use arrays or objects in this example and the previous one
+    example: [{
+      key: 'b',
+      demo: 'qux'
+    },{
+      key: 'c',
+      demo: 'max'
+    }]
+  }
+};
+```
+Result:
+```js
+{
+  foo: { 
+    a: 'baz',
+    b: 'qux',
+    c: 'max'
+  }
+}
+```
+
+### Dynamic Keys
+```js
+{ '$.aKey': ['$.path.to.sources', { '$.item.key': '$.item.path' }] }
+```
+Use any valid JSON path as the key to assign a dynamic key to your result object
+
+#### Example
+```js
+var template = {
+  '$.a.example.demo': ['$..example', {
+    '$.key': '$.demo'
+  }, {merge: true}]
+};
+
+var data = {
+  a: {
+    example: {
+      key: 'a',
+      demo: 'baz'
+    }
+  },
+  b: {
+    // NOTE: you can use arrays or objects in this example and the previous one
+    example: [{
+      key: 'b',
+      demo: 'qux'
+    },{
+      key: 'c',
+      demo: 'max'
+    }]
+  }
+};
+```
+Result:
+```js
+{
+  "baz": {
+    "a": "baz",
+    "b": "qux",
+    "c": "max"
+  }
 }
 ```
